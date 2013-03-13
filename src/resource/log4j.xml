@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender name="JFW-CH"
+        class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="log/EBI.log" />
+        <param name="MaxFileSize" value="500kB" />
+        <param name="MaxBackupIndex" value="2" />
+        <param name="Append" value="true" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                value="[%d{yyyy-MM-dd HH:mm:ss.SSS}] %p %m%n" />
+        </layout>
+    </appender>
+
+    <appender name="fileout"
+        class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="log/pinwoo.log" />
+        <param name="MaxFileSize" value="100mB" />
+        <param name="MaxBackupIndex" value="2" />
+        <param name="Append" value="true" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                value="[%d{yyyy-MM-dd HH:mm:ss.SSS}] %p %m%n" />
+        </layout>
+    </appender>
+    
+    <appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                value="[%t][%p][%d{yyyy-MM-dd HH:mm:ss.SSS}][%C] %m%n" />
+        </layout>
+    </appender>
+
+    <logger name="com.frame">
+        <level value="debug" />
+        <appender-ref ref="fileout" />
+        <appender-ref ref="stdout" />
+    </logger>
+
+    <logger name="org.springframework">
+        <level value="info" />
+        <appender-ref ref="fileout" />
+        <appender-ref ref="stdout" />
+    </logger>
+
+    <logger name="org.apache.struts">
+        <level value="info" />
+        <appender-ref ref="fileout" />
+        <appender-ref ref="stdout" />
+    </logger>
+
+    <root>
+        <level value="fatal" />
+    </root>
+
+</log4j:configuration>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+	<table-filter match-catalog="common" match-name="hh_job" />
+	<table-filter match-catalog="common" match-name="hh_job_apply" />
+	<table catalog="common" name="hh_job_apply">
+		<foreign-key constraint-name="hh_job_id_fk" foreign-table="hh_job">
+			<column-ref local-column="hh_job_id" foreign-column="hh_job_id" />
+			<many-to-one property="hhJob" />
+		</foreign-key>
+	</table>
+</hibernate-reverse-engineering>

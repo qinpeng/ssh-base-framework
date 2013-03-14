@@ -147,14 +147,25 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements IBaseDao<T> {
 		return list;
 
 	}
+
 	@Override
 	public Session session() {
 		return this.getSession();
 	}
 
 	@Override
+	public void closeSession() {
+		this.releaseSession(this.getSession());
+	}
+
+	@Override
 	public HibernateTemplate getTemplate() {
 		return this.getHibernateTemplate();
+	}
+
+	@Override
+	public DetachedCriteria criteria() {
+		return DetachedCriteria.forClass(modelClass);
 	}
 
 }

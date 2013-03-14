@@ -33,7 +33,11 @@ public interface IBaseDao<T> {
 
 	public List<T> find(T model);
 
+	public DetachedCriteria criteria();
+
 	public Session session();
+
+	public void closeSession();
 
 	public HibernateTemplate getTemplate();
 }

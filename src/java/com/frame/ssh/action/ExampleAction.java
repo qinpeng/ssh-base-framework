@@ -16,6 +16,6 @@ public class ExampleAction extends ActionSupport {
 		return SUCCESS;
 	}
 	public static void main(String[] args) {
-		
+
 	}
 }

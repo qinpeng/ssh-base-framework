@@ -12,9 +12,8 @@ import org.hibernate.criterion.Restrictions;
 import org.junit.Test;
 import org.springframework.beans.BeanUtils;
 
-import com.frame.ssh.dao.HhJob;
-import com.frame.ssh.dao.HhJobApply;
-import com.frame.ssh.dao.HibernateBase;
+import com.frame.ssh.dao.model.HhJob;
+import com.frame.ssh.dao.model.HhJobApply;
 
 public class JobTest extends HibernateBase {
 
@@ -52,13 +51,13 @@ public class JobTest extends HibernateBase {
 		HhJob job = new HhJob();
 		job.setName("abc");
 		job.setCompanyId(111);
-		job.setCountry((byte) 1);
-		job.setCity((short) 1);
-		job.setVacancy((short) 1);
-		job.setNature((byte) 1);
-		job.setSize((byte) 1);
-		job.setIndustry((byte) 1);
-		job.setFunctionCategory((byte) 1);
+		job.setCountry(Byte.valueOf((byte) 1));
+		job.setCity(Short.valueOf((short) 1));
+		job.setVacancy(Short.valueOf((short) 1));
+		job.setNature(Byte.valueOf((byte) 1));
+		job.setSize(Byte.valueOf((byte) 1));
+		job.setIndustry(Short.valueOf((short) 1));
+		job.setFunctionCategory(Byte.valueOf((byte) 1));
 		job.setAnnualPay(1000);
 		job.setDescription("descxxxxxxxxx");
 		job.setRequirement("reqxxxxxxxxxx");

@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2013-3-14 23:35:58 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.frame.ssh.dao.model.HhJob" table="hh_job" catalog="common">
+        <id name="hhJobId" type="integer">
+            <column name="hh_job_id" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="128" />
+        </property>
+        <property name="maskName" type="string">
+            <column name="mask_name" length="128" />
+        </property>
+        <property name="companyId" type="integer">
+            <column name="company_id" />
+        </property>
+        <property name="companyUserId" type="integer">
+            <column name="company_user_id" />
+        </property>
+        <property name="country" type="java.lang.Byte">
+            <column name="country" />
+        </property>
+        <property name="region" type="java.lang.Short">
+            <column name="region">
+                <comment>Province or state</comment>
+            </column>
+        </property>
+        <property name="city" type="java.lang.Short">
+            <column name="city" />
+        </property>
+        <property name="district" type="java.lang.Short">
+            <column name="district">
+                <comment>district of city</comment>
+            </column>
+        </property>
+        <property name="vacancy" type="java.lang.Short">
+            <column name="vacancy" />
+        </property>
+        <property name="nature" type="java.lang.Byte">
+            <column name="nature">
+                <comment>公司属性，如私营企业、外企等</comment>
+            </column>
+        </property>
+        <property name="size" type="java.lang.Byte">
+            <column name="size">
+                <comment>公司规模，如50人以下，50-100人等</comment>
+            </column>
+        </property>
+        <property name="industry" type="java.lang.Short">
+            <column name="industry" />
+        </property>
+        <property name="functionCategory" type="java.lang.Byte">
+            <column name="function_category" />
+        </property>
+        <property name="function" type="java.lang.Short">
+            <column name="function" />
+        </property>
+        <property name="annualPay" type="integer">
+            <column name="annual_pay" />
+        </property>
+        <property name="companyIntro" type="string">
+            <column name="company_intro" length="65535">
+                <comment>公司介绍</comment>
+            </column>
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="65535">
+                <comment>职位描述</comment>
+            </column>
+        </property>
+        <property name="requirement" type="string">
+            <column name="requirement" length="65535">
+                <comment>职位要求</comment>
+            </column>
+        </property>
+        <property name="welfare" type="string">
+            <column name="welfare" length="65535">
+                <comment>薪酬福利</comment>
+            </column>
+        </property>
+        <property name="reportManager" type="string">
+            <column name="report_manager" length="45" />
+        </property>
+        <property name="teamDescription" type="string">
+            <column name="team_description" length="128" />
+        </property>
+        <property name="department" type="string">
+            <column name="department" length="45" />
+        </property>
+        <property name="onBoardDate" type="timestamp">
+            <column name="on_board_date" length="19" />
+        </property>
+        <property name="openType" type="java.lang.Character">
+            <column name="open_type" length="1">
+                <comment>ENUM(A,H,S). Open Level: A-All, H-headhunter &amp; Referer, S-Job Seeker</comment>
+            </column>
+        </property>
+        <property name="openLevel" type="java.lang.Character">
+            <column name="open_level" length="1">
+                <comment>ENUM(O,H,A,I). 职位开放程度，O-Open, H-Open for headhunter, A-Approval needed for headhunter, I-Open for Internal only</comment>
+            </column>
+        </property>
+        <property name="priceType" type="java.lang.Character">
+            <column name="price_type" length="1">
+                <comment>ENUM(F,P). 佣金类型，F-Fixed charges（固定佣金）, P-Proportional charges（年薪比例）</comment>
+            </column>
+        </property>
+        <property name="priceValue" type="java.lang.Integer">
+            <column name="price_value" />
+        </property>
+        <property name="priceMinimum" type="java.lang.Integer">
+            <column name="price_minimum" />
+        </property>
+        <property name="priceMaximum" type="java.lang.Integer">
+            <column name="price_maximum" />
+        </property>
+        <property name="percentValue" type="big_decimal">
+            <column name="percent_value" precision="6" />
+        </property>
+        <property name="remark" type="string">
+            <column name="remark" length="65535">
+                <comment>顾问审核时添加的友情提示</comment>
+            </column>
+        </property>
+        <property name="remarkInternal" type="string">
+            <column name="remark_internal" length="1024" />
+        </property>
+        <property name="urgent" type="java.lang.Character">
+            <column name="urgent" length="1" />
+        </property>
+        <property name="status" type="java.lang.Character">
+            <column name="status" length="1">
+                <comment>ENUM(S,V,O,C). 职位提交状态，S-save, V-verify, O-open, C-close</comment>
+            </column>
+        </property>
+        <property name="viewCount" type="java.lang.Integer">
+            <column name="view_count">
+                <comment>浏览次数</comment>
+            </column>
+        </property>
+        <property name="updateTime" type="timestamp">
+            <column name="update_time" length="19" />
+        </property>
+        <property name="createTime" type="timestamp">
+            <column name="create_time" length="19" />
+        </property>
+        <set name="hhJobApplies" table="hh_job_apply" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="hh_job_id" />
+            </key>
+            <one-to-many class="com.frame.ssh.dao.model.HhJobApply" />
+        </set>
+    </class>
+</hibernate-mapping>

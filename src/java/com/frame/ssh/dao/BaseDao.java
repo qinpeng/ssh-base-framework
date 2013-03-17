@@ -11,7 +11,7 @@ import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
-public interface IBaseDao<T> {
+public interface BaseDao<T> {
 
 	public Integer add(T model);
 
@@ -33,6 +33,10 @@ public interface IBaseDao<T> {
 
 	public List<T> find(T model);
 
+	public int count(DetachedCriteria dc);
+	
+	public int count(T model);
+	
 	public DetachedCriteria criteria();
 
 	public Session session();

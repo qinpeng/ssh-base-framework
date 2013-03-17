@@ -50,32 +50,6 @@ public class HhJob extends Model {
 	public HhJob() {
 	}
 
-	public HhJob(String name, Integer companyId, Integer companyUserId, Byte country, Short city, Short vacancy,
-			Byte nature, Byte size, Short industry, Byte functionCategory, Integer annualPay, String description,
-			String requirement, Date onBoardDate, Character openType, Character openLevel, Character priceType,
-			Character urgent, Character status, Date updateTime, Date createTime) {
-		this.name = name;
-		this.companyId = companyId;
-		this.companyUserId = companyUserId;
-		this.country = country;
-		this.city = city;
-		this.vacancy = vacancy;
-		this.nature = nature;
-		this.size = size;
-		this.industry = industry;
-		this.functionCategory = functionCategory;
-		this.annualPay = annualPay;
-		this.description = description;
-		this.requirement = requirement;
-		this.onBoardDate = onBoardDate;
-		this.openType = openType;
-		this.openLevel = openLevel;
-		this.priceType = priceType;
-		this.urgent = urgent;
-		this.status = status;
-		this.updateTime = updateTime;
-		this.createTime = createTime;
-	}
 	public HhJob(String name, String maskName, Integer companyId, Integer companyUserId, Byte country, Short region,
 			Short city, Short district, Short vacancy, Byte nature, Byte size, Short industry, Byte functionCategory,
 			Short function, Integer annualPay, String companyIntro, String description, String requirement,
@@ -459,7 +433,7 @@ public class HhJob extends Model {
 	}
 
 	public static enum FieldNamesEnum {
-		name, maskName, companyId, companyUserId, country, region, city, district, vacancy, nature, size, industry, functionCategory, function, annualPay, companyIntro, description, requirement, welfare, reportManager, teamDescription, department, onBoardDate, openType, openLevel, priceType, priceValue, priceMinimum, priceMaximum, percentValue, remark, remarkInternal, urgent, status, viewCount, updateTime, createTime, hhJobApplies;
+		hhJobId, name, maskName, companyId, companyUserId, country, region, city, district, vacancy, nature, size, industry, functionCategory, function, annualPay, companyIntro, description, requirement, welfare, reportManager, teamDescription, department, onBoardDate, openType, openLevel, priceType, priceValue, priceMinimum, priceMaximum, percentValue, remark, remarkInternal, urgent, status, viewCount, updateTime, createTime, hhJobApplies;
 	}
 
 }

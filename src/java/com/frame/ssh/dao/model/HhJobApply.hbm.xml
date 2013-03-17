@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 2013-3-14 23:35:58 by Hibernate Tools 4.0.0 -->
 <hibernate-mapping>
     <class name="com.frame.ssh.dao.model.HhJobApply" table="hh_job_apply" catalog="common">
         <id name="hhJobApplyId" type="integer">
@@ -21,7 +20,7 @@
             <column name="name" length="45" />
         </property>
         <property name="email" type="string">
-            <column name="email" length="256" />
+            <column name="email" />
         </property>
         <property name="mobile" type="string">
             <column name="mobile" length="45" />
@@ -41,7 +40,7 @@
             <column name="pay_percent" precision="6" />
         </property>
         <property name="currentStep" type="java.lang.Character">
-            <column name="current_step" length="2" />
+            <column name="current_step" length="1" />
         </property>
         <property name="status" type="java.lang.Character">
             <column name="status" length="1">
@@ -70,7 +69,7 @@
             </column>
         </property>
         <property name="remarkInternal" type="string">
-            <column name="remark_internal" length="1024" />
+            <column name="remark_internal" />
         </property>
         <property name="checkpoint" type="timestamp">
             <column name="checkpoint" length="19" />

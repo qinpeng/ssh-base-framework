@@ -12,10 +12,11 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Projections;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-public class BaseDaoImpl<T> extends HibernateDaoSupport implements IBaseDao<T> {
+public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 	protected Log log = LogFactory.getLog(this.getClass());
 	protected int firstResult;
 	protected int maxResults;
@@ -146,6 +147,16 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements IBaseDao<T> {
 		}
 		return list;
 
+	}
+
+	@Override
+	public int count(DetachedCriteria dc) {
+		return (Integer) dc.setProjection(Projections.rowCount()).getExecutableCriteria(getSession()).list().get(0);
+	}
+
+	@Override
+	public int count(T model) {
+		return 0;
 	}
 
 	@Override

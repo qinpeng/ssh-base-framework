@@ -2,10 +2,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 			http://www.springframework.org/schema/beans/spring-beans-2.5.xsd  
             http://www.springframework.org/schema/aop  
             http://www.springframework.org/schema/aop/spring-aop-2.5.xsd  
+            http://www.springframework.org/schema/tx  
+           	http://www.springframework.org/schema/tx/spring-tx.xsd 
             http://www.springframework.org/schema/context  
             http://www.springframework.org/schema/context/spring-context-2.5.xsd  
             http://www.springframework.org/schema/jee 
@@ -13,7 +16,6 @@
 
 	<bean id="springContextHolder" class="com.frame.ssh.util.context.SpringContextHolder" />
 
-	<!-- 配置不带连接池的数据源 -->
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
@@ -38,11 +40,44 @@
 		</property>
 	</bean>
 
-	<bean id="hhJobDao" class="com.frame.ssh.dao.BaseDaoImpl">
-		<constructor-arg>
-			<value>com.frame.ssh.dao.model.HhJob</value>
-		</constructor-arg>
+	<!-- <bean id="hhJobDao" class="com.frame.ssh.dao.BaseDaoImpl"> <constructor-arg> 
+		<value>com.frame.ssh.dao.model.HhJob</value> </constructor-arg> <property 
+		name="sessionFactory" ref="sessionFactory" /> </bean> -->
+
+	<bean id="hhJobDao" class="com.frame.ssh.dao.DefaultDao">
 		<property name="sessionFactory" ref="sessionFactory" />
+		<property name="persistentClass" value="com.frame.ssh.dao.model.HhJob" />
 	</bean>
+
+	<!-- generic dao必须绑定事务控制 -->
+
+	<bean id="txManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+	</bean>
+
+	<tx:annotation-driven transaction-manager="txManager" />
+
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="get*" propagation="REQUIRED" rollback-for="Exception" />
+			<tx:method name="que*" propagation="REQUIRED" rollback-for="Exception" />
+			<tx:method name="del*" propagation="REQUIRED" rollback-for="Exception" />
+			<tx:method name="save*" propagation="REQUIRED"
+				rollback-for="Exception" />
+			<tx:method name="update*" propagation="REQUIRED"
+				rollback-for="Exception" />
+			<tx:method name="*" read-only="false" />
+		</tx:attributes>
+	</tx:advice>
+
+	<aop:config>
+		<aop:pointcut
+			expression="execution(* com.googlecode.genericdao.dao.hibernate.*.*(..))"
+			id="allDaoMethod" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="allDaoMethod" />
+	</aop:config>
 
 </beans>  

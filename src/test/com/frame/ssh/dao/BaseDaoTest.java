@@ -7,12 +7,10 @@ package com.frame.ssh.dao;
 import java.util.Date;
 import java.util.List;
 
-import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
@@ -25,11 +23,12 @@ import com.frame.ssh.dao.model.HhJob.PriceType;
 import com.frame.ssh.dao.model.HhJob.Status;
 import com.frame.ssh.dao.model.HhJobApply;
 
+@SuppressWarnings("unchecked")
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/beans/spring-basic-beans.xml"})
 public class BaseDaoTest extends AbstractJUnit4SpringContextTests {
 	@Autowired
-	IBaseDao hhJobDao;
+	BaseDao<HhJob> hhJobDao;
 
 	@Test
 	public void testDao() throws Exception {

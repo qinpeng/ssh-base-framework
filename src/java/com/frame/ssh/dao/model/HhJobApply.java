@@ -32,17 +32,6 @@ public class HhJobApply extends Model {
 	public HhJobApply() {
 	}
 
-	public HhJobApply(HhJob hhJob, Character applyType, BigDecimal payPercent, Character currentStep, Character status,
-			Character contactInfoOpenLevel, Date updateTime, Date createTime) {
-		this.hhJob = hhJob;
-		this.applyType = applyType;
-		this.payPercent = payPercent;
-		this.currentStep = currentStep;
-		this.status = status;
-		this.contactInfoOpenLevel = contactInfoOpenLevel;
-		this.updateTime = updateTime;
-		this.createTime = createTime;
-	}
 	public HhJobApply(HhJob hhJob, Integer hhUserId, Integer hhJobSeekerId, String name, String email, String mobile,
 			String phone, String resumeName, Character applyType, BigDecimal payPercent, Character currentStep,
 			Character status, String referenceReport, String offerLetter, Integer offeredAnnualPay, Integer finalPay,
@@ -277,7 +266,7 @@ public class HhJobApply extends Model {
 	}
 
 	public static enum FieldNamesEnum {
-		hhJob, hhUserId, hhJobSeekerId, name, email, mobile, phone, resumeName, applyType, payPercent, currentStep, status, referenceReport, offerLetter, offeredAnnualPay, finalPay, finalPayForUser, remarkInternal, checkpoint, contactInfoOpenLevel, updateTime, createTime;
+		hhJobApplyId, hhJob, hhUserId, hhJobSeekerId, name, email, mobile, phone, resumeName, applyType, payPercent, currentStep, status, referenceReport, offerLetter, offeredAnnualPay, finalPay, finalPayForUser, remarkInternal, checkpoint, contactInfoOpenLevel, updateTime, createTime;
 	}
 
 }

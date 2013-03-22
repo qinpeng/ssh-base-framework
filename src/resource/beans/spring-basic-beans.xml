@@ -40,14 +40,6 @@
 		</property>
 	</bean>
 
-	<!-- <bean id="hhJobDao" class="com.frame.ssh.dao.BaseDaoImpl"> <constructor-arg> 
-		<value>com.frame.ssh.dao.model.HhJob</value> </constructor-arg> <property 
-		name="sessionFactory" ref="sessionFactory" /> </bean> -->
-
-	<bean id="hhJobDao" class="com.frame.ssh.dao.DefaultDao">
-		<property name="sessionFactory" ref="sessionFactory" />
-		<property name="persistentClass" value="com.frame.ssh.dao.model.HhJob" />
-	</bean>
 
 	<!-- generic dao必须绑定事务控制 -->
 
@@ -80,4 +72,8 @@
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="allDaoMethod" />
 	</aop:config>
 
+	<bean id="hhJobDao" class="com.frame.ssh.dao.GenericDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+		<property name="persistentClass" value="com.frame.ssh.dao.model.HhJob" />
+	</bean>
 </beans>  

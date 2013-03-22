@@ -6,6 +6,8 @@ package com.frame.ssh.dao;
 
 import java.io.Serializable;
 
+import org.hibernate.Session;
+
 import com.googlecode.genericdao.dao.hibernate.GenericDAOImpl;
 
 public class GenericDao<T, ID extends Serializable> extends GenericDAOImpl<T, ID> {
@@ -14,4 +16,7 @@ public class GenericDao<T, ID extends Serializable> extends GenericDAOImpl<T, ID
 		this.persistentClass = persistentClass;
 	}
 
+	public Session session() {
+		return super.getSession();
+	}
 }

@@ -2,7 +2,7 @@
  * Created on 2013-3-14
  * 
  */
-package com.frame.ssh.dao;
+package com.frame.ssh.dao.basedao;
 
 import java.util.ArrayList;
 import java.util.Collection;

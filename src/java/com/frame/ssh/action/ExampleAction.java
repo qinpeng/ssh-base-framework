@@ -15,7 +15,4 @@ public class ExampleAction extends ActionSupport {
 		super.execute();
 		return SUCCESS;
 	}
-	public static void main(String[] args) {
-
-	}
 }

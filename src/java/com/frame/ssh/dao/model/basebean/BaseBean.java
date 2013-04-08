@@ -2,7 +2,7 @@
  * Created on 2013-3-21
  * 
  */
-package com.frame.ssh.dao.model;
+package com.frame.ssh.dao.model.basebean;
 
 import java.util.Date;
 import java.util.Map;

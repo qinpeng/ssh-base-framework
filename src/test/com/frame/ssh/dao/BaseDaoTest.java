@@ -16,6 +16,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.frame.ssh.dao.basedao.BaseDao;
 import com.frame.ssh.dao.model.HhJob;
 import com.frame.ssh.dao.model.HhJob.OpenLevel;
 import com.frame.ssh.dao.model.HhJob.OpenType;

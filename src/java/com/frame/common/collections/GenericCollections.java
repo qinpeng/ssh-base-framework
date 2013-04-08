@@ -7,6 +7,7 @@ package com.frame.common.collections;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -14,6 +15,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 import com.frame.common.exception.ArgumentErrorException;
 import com.frame.common.reflect.ReflectHelper;
@@ -226,4 +228,31 @@ public class GenericCollections {
 		public Object iterate(K key, V value);
 	}
 
+	public static <K, V extends Comparable<V>> Map<K, V> sortByValues(final Map<K, V> map) {
+		Comparator<K> valueComparator = new Comparator<K>() {
+			public int compare(K k1, K k2) {
+				int compare = map.get(k2).compareTo(map.get(k1));
+				if (compare == 0) {
+					if (k1 instanceof Comparable) {
+						return ((Comparable) k1).compareTo((Comparable) k2);
+					} else
+						return 1;
+				} else
+					return compare;
+			}
+		};
+		Map<K, V> sortedByValues = new TreeMap<K, V>(valueComparator);
+		sortedByValues.putAll(map);
+		return sortedByValues;
+	}
+
+	public static <T> T getData(List<T> list, T data) {
+		T ret = null;
+		if (list != null && data != null) {
+			int index = -1;
+			if ((index = list.indexOf(data)) > -1)
+				ret = list.get(index);
+		}
+		return ret;
+	}
 }

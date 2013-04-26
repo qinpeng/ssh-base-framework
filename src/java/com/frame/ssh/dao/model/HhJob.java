@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-public class HhJob extends Model {
+public class HhJob extends Model<HhJob> {
 
 	private Integer hhJobId;
 	private String name;
@@ -24,8 +24,8 @@ public class HhJob extends Model {
 	private Short function;
 	private Integer annualPay;
 	private String companyIntro; // 公司介绍.
-	private String description; // 职位描述.
-	private String requirement; // 职位要求.
+	private String description;
+	private String requirement;
 	private String welfare; // 薪酬福利.
 	private String reportManager;
 	private String teamDescription;
@@ -50,6 +50,32 @@ public class HhJob extends Model {
 	public HhJob() {
 	}
 
+	public HhJob(String name, Integer companyId, Integer companyUserId, Byte country, Short city, Short vacancy,
+			Byte nature, Byte size, Short industry, Byte functionCategory, Integer annualPay, String description,
+			String requirement, Date onBoardDate, Character openType, Character openLevel, Character priceType,
+			Character urgent, Character status, Date updateTime, Date createTime) {
+		this.name = name;
+		this.companyId = companyId;
+		this.companyUserId = companyUserId;
+		this.country = country;
+		this.city = city;
+		this.vacancy = vacancy;
+		this.nature = nature;
+		this.size = size;
+		this.industry = industry;
+		this.functionCategory = functionCategory;
+		this.annualPay = annualPay;
+		this.description = description;
+		this.requirement = requirement;
+		this.onBoardDate = onBoardDate;
+		this.openType = openType;
+		this.openLevel = openLevel;
+		this.priceType = priceType;
+		this.urgent = urgent;
+		this.status = status;
+		this.updateTime = updateTime;
+		this.createTime = createTime;
+	}
 	public HhJob(String name, String maskName, Integer companyId, Integer companyUserId, Byte country, Short region,
 			Short city, Short district, Short vacancy, Byte nature, Byte size, Short industry, Byte functionCategory,
 			Short function, Integer annualPay, String companyIntro, String description, String requirement,

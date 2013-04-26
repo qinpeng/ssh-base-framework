@@ -13,10 +13,10 @@
         <property name="maskName" type="string">
             <column name="mask_name" length="128" />
         </property>
-        <property name="companyId" type="java.lang.Integer">
+        <property name="companyId" type="integer">
             <column name="company_id" />
         </property>
-        <property name="companyUserId" type="java.lang.Integer">
+        <property name="companyUserId" type="integer">
             <column name="company_user_id" />
         </property>
         <property name="country" type="java.lang.Byte">
@@ -57,26 +57,22 @@
         <property name="function" type="java.lang.Short">
             <column name="function" />
         </property>
-        <property name="annualPay" type="java.lang.Integer">
+        <property name="annualPay" type="integer">
             <column name="annual_pay" />
         </property>
         <property name="companyIntro" type="string">
-            <column name="company_intro">
+            <column name="company_intro" length="65535">
                 <comment>公司介绍</comment>
             </column>
         </property>
         <property name="description" type="string">
-            <column name="description">
-                <comment>职位描述</comment>
-            </column>
+            <column name="description" length="65535" />
         </property>
         <property name="requirement" type="string">
-            <column name="requirement">
-                <comment>职位要求</comment>
-            </column>
+            <column name="requirement" length="65535" />
         </property>
         <property name="welfare" type="string">
-            <column name="welfare">
+            <column name="welfare" length="65535">
                 <comment>薪酬福利</comment>
             </column>
         </property>
@@ -120,12 +116,12 @@
             <column name="percent_value" precision="6" />
         </property>
         <property name="remark" type="string">
-            <column name="remark">
+            <column name="remark" length="65535">
                 <comment>顾问审核时添加的友情提示</comment>
             </column>
         </property>
         <property name="remarkInternal" type="string">
-            <column name="remark_internal" />
+            <column name="remark_internal" length="1024" />
         </property>
         <property name="urgent" type="java.lang.Character">
             <column name="urgent" length="1" />
@@ -146,7 +142,7 @@
         <property name="createTime" type="timestamp">
             <column name="create_time" length="19" />
         </property>
-        <set name="hhJobApplies" table="hh_job_apply" inverse="true" lazy="true" fetch="select">
+        <set name="hhJobApplies" table="hh_job_apply" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="hh_job_id" />
             </key>

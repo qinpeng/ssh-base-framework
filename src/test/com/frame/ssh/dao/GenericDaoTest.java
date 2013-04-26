@@ -7,7 +7,6 @@ package com.frame.ssh.dao;
 import java.util.Date;
 import java.util.List;
 
-import org.hibernate.criterion.Restrictions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,6 @@ import com.frame.ssh.dao.model.HhJob.OpenType;
 import com.frame.ssh.dao.model.HhJob.PriceType;
 import com.frame.ssh.dao.model.HhJob.Status;
 import com.frame.ssh.dao.model.HhJobApply;
-import com.frame.ssh.util.hibernate.HibernateUtil;
 import com.googlecode.genericdao.dao.hibernate.GenericDAO;
 import com.googlecode.genericdao.search.Search;
 

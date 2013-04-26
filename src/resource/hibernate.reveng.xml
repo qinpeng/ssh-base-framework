@@ -22,4 +22,10 @@
 	<table-filter match-catalog="common" match-name="hh_job" />
 	<table-filter match-catalog="common" match-name="hh_job_apply" />
 
+	<table catalog="common" name="hh_job_apply">
+		<foreign-key constraint-name="hh_job_id_fk" foreign-table="hh_job">
+			<column-ref local-column="hh_job_id" foreign-column="hh_job_id" />
+			<many-to-one property="hhJob"/>
+		</foreign-key>
+	</table>
 </hibernate-reverse-engineering>

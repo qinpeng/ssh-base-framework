@@ -3,7 +3,7 @@ package com.frame.ssh.dao.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class HhJobApply extends Model {
+public class HhJobApply extends Model<HhJobApply> {
 
 	private Integer hhJobApplyId;
 	private HhJob hhJob;
